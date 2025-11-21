@@ -5,7 +5,7 @@ import Skills from './src/components/Skills';
 import Projects from './src/components/Projects';
 import Contact from './src/components/Contact';
 import Experience from './src/components/Exp';
-
+import './index.css';
 //import './CSS/main.css';
 
 function App() {
