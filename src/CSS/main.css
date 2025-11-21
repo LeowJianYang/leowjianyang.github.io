@@ -1,0 +1,172 @@
+/* ===== MAIN CSS FILE ===== */
+
+/* Import all CSS files */
+@import './base.css';
+@import './header.css';
+@import './hero.css';
+@import './about.css';
+@import './skills.css';
+@import './projects.css';
+@import './contact.css';
+@import './footer.css';
+
+/* ===== GLOBAL APP STYLES ===== */
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  padding-top: 7rem;
+}
+
+/* ===== INTERSECTION OBSERVER ANIMATIONS ===== */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: all 0.8s ease-out;
+}
+
+.animate-on-scroll.animate {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== ADDITIONAL UTILITY CLASSES ===== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-padding {
+  padding: var(--space-3xl) 0;
+}
+
+.section-padding-sm {
+  padding: var(--space-2xl) 0;
+}
+
+.section-padding-lg {
+  padding: var(--space-4xl) 0;
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+}
+
+.shadow-custom {
+  box-shadow: 0 20px 40px rgba(99, 102, 241, 0.1);
+}
+
+.hover-lift {
+  transition: transform var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+}
+
+/* ===== RESPONSIVE  ===== */
+@media (max-width: 768px) {
+  .main {
+    padding-top: 6rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .main {
+    padding-top: 5.5rem;
+  }
+}
+
+/* ===== ACCESSIBILITY IMPROVEMENTS ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Focus indicators for better accessibility */
+*:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+button:focus,
+a:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  :root {
+    --text-primary: #000000;
+    --text-secondary: #333333;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --border-light: #666666;
+    --border-medium: #333333;
+  }
+}
+
+/* ===== PRINT STYLES ===== */
+@media print {
+  .header,
+  .footer,
+  .hero__scroll,
+  .projects__filters,
+  .contact__form {
+    display: none;
+  }
+
+  .main {
+    padding-top: 0;
+  }
+
+  body {
+    font-size: 12pt;
+    line-height: 1.4;
+    color: black;
+    background: white;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: black;
+    page-break-after: avoid;
+  }
+
+  p, li {
+    orphans: 3;
+    widows: 3;
+  }
+
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+
+  .projects__card,
+  .skills__item,
+  .about__stat {
+    page-break-inside: avoid;
+  }
+}
