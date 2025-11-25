@@ -26,10 +26,39 @@ jobs:
       - name: Build project
         run: pnpm run build
 
+      - name: Create Redirect Pages
+        run: |
+        
+          mkdir -p dist/old-page
+          cat <<EOF > dist/Portfolio/index.html
+          <!DOCTYPE html>
+          <html>
+          <head>
+            <meta http-equiv="refresh" content="0; url=/" />
+          </head>
+          <body>
+            <p>Page moved: <a href="/">Home</a></p>
+          </body>
+          </html>
+          EOF
+
+         
+          # mkdir -p dist/legacy
+          # cat <<EOF > dist/legacy/index.html
+          # <!DOCTYPE html>
+          # <html>
+          # <head>
+          #   <meta http-equiv="refresh" content="0; url=https://example.com" />
+          # </head>
+          # <body>
+          #   <p>Page moved: <a href="https://example.com">https://example.com</a></p>
+          # </body>
+          # </html>
+          # EOF
+
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
-
