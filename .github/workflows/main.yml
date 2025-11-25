@@ -29,7 +29,7 @@ jobs:
       - name: Create Redirect Pages
         run: |
         
-          mkdir -p dist/old-page
+          mkdir -p dist/Portfolio
           cat <<EOF > dist/Portfolio/index.html
           <!DOCTYPE html>
           <html>
